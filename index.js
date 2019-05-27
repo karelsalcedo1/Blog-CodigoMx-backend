@@ -23,11 +23,19 @@ const con = mysql.createConnection({
 
 app.get('/posts', function(req, res) {
       con.connect(function(err) {
-        con.query("SELECT * FROM posts", function (err, result, fields) {
+         con.query("SELECT * FROM posts", function (err, result, fields) {
           res.json(result);
         });
     });
   });
+
+app.get('/responses', function(req, res) {
+    con.connect(function(err) {
+       con.query("SELECT * FROM responses", function (err, result, fields) {
+        res.json(result);
+      });
+  });
+});  
 
 //Save a posts  
 app.post('/create_posts', function(req, res) {
